@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Musni Urian Funeral Services</title>
+   <link rel="icon" type="image/png" href="embalm.jpg">
+  <style>
+    :root {
+      --primary: #1a3d7c;
+      --secondary: #285aa6;
+      --light-bg: #e6f0ff;
+      --text: #333;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; color: var(--text); background: var(--light-bg); }
+
+    header {
+      background: var(--primary); color: white;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 20px; flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; }
+    .brand img {
+      height: 80px;
+      margin-right: 10px;
+      filter: drop-shadow(0 0 8px white);
+      transition: filter 0.3s ease-in-out;
+    }
+    .brand img:hover {
+      filter: drop-shadow(0 0 12px white);
+    }
+    .brand h1 { font-size: 1.4rem; }
+    .brand p { font-size: 0.8rem; color: #cde; font-style: italic; }
+
+    nav { display: flex; gap: 10px; flex-wrap: wrap; }
+    nav button {
+      background: var(--secondary);
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.6);
+      transition: all 0.3s ease-in-out;
+    }
+    nav button:hover {
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 0 16px rgba(255,255,255,0.9);
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 40px 20px; display: none;
+      max-width: 1000px; margin: auto;
+    }
+    section.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2, h3 { color: var(--primary); margin-bottom: 20px; text-align: center; }
+
+ section#home {
+  padding: 0;
+  margin: 0;
+  max-width: 100% !important;
+}
+
+.home-banner {
+  background: url('homepage/homepage.png') center/cover no-repeat;
+  height: 100vh;
+  width: 100%;
+}
+    .home-banner div {
+      background: rgba(0,0,0,0.4);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+  }
+  .carousel img {
+    height: 160px;
+    border-radius: 10px;
+    flex: 0 0 auto;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .carousel img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(30, 60, 180, 0.6);
+  }
+
+    .home-description, .why-choose-us, .what-we-offer {
+      margin-top: 30px;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .home-description p, .why-choose-us p, .what-we-offer p {
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+    .what-we-offer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      text-align: center;
+    }
+ .announcement-section {
+  margin: 40px auto;
+  max-width: 900px;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  position: relative;
+}
+
+.announcement-carousel {
+  display: block; /* Show all announcements stacked */
+  width: 100%;
+}
+
+.announcement-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.announcement-slide img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.announcement-caption {
+  flex: 1;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+  max-width: 400px;
+  position: relative;
+}
+
+.see-more-btn {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--primary);
+  cursor: pointer;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+  .feature-card {
+      width: 220px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .feature-card img {
+      width: 60px; height: 60px; object-fit: contain; margin-bottom: 10px;
+    }
+
+    .team-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px; margin-top: 30px;
+    }
+    .team-member {
+      background: #fff; padding: 20px; border-radius: 10px;
+      text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .team-member:hover { transform: translateY(-5px); }
+    .team-member img {
+      width: 150px; height: 200px; object-fit: cover;
+      border-radius: 10px; margin-bottom: 15px;
+    }
+
+ .team-carousel-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.team-carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 20px;
+}
+
+.team-carousel .team-member {
+  flex: 0 0 calc(50% - 10px); /* show 2 at a time */
+}
+.carousel-nav {
+  text-align: center;
+  margin-top: 10px;
+}
+.carousel-nav button {
+  padding: 10px 16px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin: 0 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+.carousel-nav button:hover {
+  background: var(--secondary);
+}
+
+  
+  .team-carousel .team-member {
+  flex: 0 0 200px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
+
+.team-carousel .team-member img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.team-carousel .team-member h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--primary);
+}
+
+.team-carousel .team-member p {
+  margin-top: 5px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+  .team-carousel .team-member:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  }
+  .team-carousel .team-member img {
+    width: auto;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  .about-trivia {
+    background: #fff8e1;
+    border-left: 6px solid var(--primary);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .about-trivia h3 {
+    color: var(--secondary);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+  }
+  .about-trivia ul {
+    list-style-type: square;
+    padding-left: 20px;
+    color: #444;
+    line-height: 1.6;
+  }
+  .about-trivia ul li {
+    margin-bottom: 10px;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    padding: 10px 0;
+  }
+  .social-links a {
+    display: inline-block;
+  }
+  .social-links img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s;
+  }
+  .social-links img:hover {
+    transform: scale(1.2);
+  }
+
+  .carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+.carousel.scrollable {
+  display: flex;
+  gap: 10px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+.carousel-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+.carousel-btn:hover {
+  background-color: var(--secondary);
+}
+
+.carousel.gallery-collage {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .carousel.gallery-collage figure {
+      width: 260px;
+    }
+
+    .carousel.gallery-collage img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .carousel.gallery-collage img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .carousel.gallery-collage figcaption {
+      font-size: 0.9rem;
+      margin-top: 8px;
+      color: var(--text);
+      padding: 0 5px;
+    }
+
+    .carousel.gallery-collage figcaption.right {
+      text-align: right;
+    }
+
+    .carousel.gallery-collage figcaption.left {
+      text-align: left;
+    }
+
+#galleryThumbnails img {
+  cursor: pointer;
+  width: 120px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#galleryThumbnails {
+  display: flex;
+  flex-wrap: nowrap; 
+  gap: 10px;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+
+#galleryThumbnails img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--primary);
+    color: white;
+    margin-top: 40px;
+    position: relative;
+  }
+  footer .footer-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  footer .footer-icons a img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+  }
+  footer .footer-icons a img:hover {
+    transform: scale(1.2);
+  }
+
+    .contact-details p { margin: 10px 0; }
+    .map-container { margin-top: 20px; }
+
+    form {
+      display: flex; flex-direction: column;
+      gap: 10px; margin-top: 20px;
+    }
+    input, textarea {
+      padding: 10px; border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button[type="submit"] {
+      background: var(--primary); color: white;
+      border: none; padding: 10px;
+      border-radius: 6px; cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background: var(--secondary);
+    }
+
+    .lightbox {
+      display: none; position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center; align-items: center;
+      z-index: 9999;
+    }
+    .lightbox img {
+      max-width: 90%; max-height: 80vh;
+      border-radius: 8px;
+    }
+    .lightbox.active { display: flex; }
+
+    footer {
+      text-align: center; padding: 20px;
+      background: var(--primary); color: white;
+      margin-top: 40px;
+    }
+    nav button.active-nav {
+  border-bottom: 3px solid white;
+  font-weight: bold;
+}
+  </style>
+</head>
+<body>
+ <header>
+  <div class="brand">
+    <img src="logo.png" alt="Logo">
+    <div>
+      <h1>Musni Urian Funeral Services & Flower Shop</h1>
+      <p>"Providing dignity and comfort on every farewell".</p>
+    </div>
+  </div>
+  <nav>
+    <button onclick="show('home')">Home</button>
+    <button onclick="show('about')">About Us</button>
+    <button onclick="show('services')">Services</button>
+    <button onclick="show('gallery')">Gallery</button>
+    <button onclick="show('contact')">Contact</button>
+  </nav>
+</header>
+
+ <section id="home" class="active">
+  <div class="home-banner"></div>
+  <div class="carousel">
+    <img src="services/om3.png" alt="pic1">
+    <img src="services/sc1.png" alt="pic2">
+    <img src="services/mc1.png" alt="pic3">
+    <img src="services/om2.png" alt="pic4">
+    <img src="services/sc2.png" alt="pic5">
+    <img src="services/mc3.png" alt="pic6">
+  </div>
+  <div class="home-description">
+    <h2>Why Choose Musni Urian Funeral Services?</h2>
+    <p>At Musni Urian Funeral Services, we believe that every farewell should be meaningful, respectful, and handled with the utmost care. We are a family-owned service dedicated to providing affordable, professional, and compassionate funeral arrangements that honor the memory of your loved ones.</p>
+    <ul style="margin-top: 20px; list-style-type: none; padding: 0; font-size: 1rem; line-height: 1.6;">
+      <li>✔️ Trusted family-operated business</li>
+      <li>✔️ Experienced team of licensed professionals</li>
+      <li>✔️ Affordable packages tailored to your needs</li>
+      <li>✔️ Floral, music, embalming, and transportation services</li>
+      <li>✔️ Serving Ballesteros and nearby communities</li>
+    </ul>
+  </div>
+
+  <div class="what-we-offer">
+    <div class="feature-card">
+      <img src="homepage/embalm.jpg" alt="Embalming">
+      <h3>Embalming</h3>
+      <p>Professional preparation and preservation of your loved one with dignity.</p>
+    </div>
+    <div class="feature-card">
+      <img src="services/sc4.png" alt="Caskets">
+      <h3>Caskets</h3>
+      <p>Wide selection of wood, semi-metal, and full metal caskets available.</p>
+    </div>
+    <div class="feature-card">
+      <img src="services/flower.jpg" alt="Floral">
+      <h3>Floral Arrangements</h3>
+      <p>Beautiful floral tributes crafted with respect and care by our in-house florist.</p>
+    </div>
+    <div class="feature-card">
+      <img src="services/band.jpg" alt="Band Services">
+      <h3>Music Services</h3>
+      <p>Live band and singers to accompany farewells with heartfelt melodies.</p>
+    </div>
+  </div>
+  <div class="announcement-section">
+    <h2>Announcements</h2>
+    <div class="announcement-carousel" id="announcementCarousel">
+      <div class="announcement-slide">
+        <img src="homepage/anniv.jpg" alt="Anniversary">
+        <p class="announcement-caption">💌Three Years of Meaningful Service
+
+Today, we celebrate a significant milestone—3 years of unwavering dedication, compassion, and service to the families who have entrusted us with their most delicate moments.🫂
+
+At Musni Urian Funeral Services , our mission has always been clear: to walk alongside grieving families, offering not just a service, but a source of dignity and comfort on every farewell. Through each quiet goodbye, each tearful embrace, and each solemn tribute, we have been reminded of the sacredness of life—and the strength of the human spirit in times of loss.✨
+
+As we look forward to the years ahead, we remain committed to serving with the same compassion, respect, and care that have defined us since day one.
+Thank you for being part of our journey.❤️
+
+Musni Urian Funeral Services – Providing dignity and comfort on every farewell.🕊️
+
+#musniurianfuneralservices </p>
+<a href="https://m.me/musniurianfs" target="_blank" style="display: inline-block; margin-top: 20px; background-color: #0084ff; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+  💬 Send Message
+</a>
+<p class="published-date-below">📅 Published: June 23, 2025</p>
+  </div>
+</section>
+
+<section id="about">
+  <h2 style="font-size: 2.2rem; margin-bottom: 30px; text-align: center; color: var(--primary);">About Us</h2>
+
+  <div class="about-trivia">
+    <h3>Did You Know?</h3>
+    <ul>
+      <li><strong>Family-Owned Legacy:</strong> Musni Urian Funeral Services has served the Ballesteros community for over three years with compassion and integrity.</li>
+      <li><strong>Personalized Touch:</strong> We customize every ceremony to reflect the unique life and story of your loved one.</li>
+      <li><strong>24/7 Availability:</strong> Our team is always ready to assist you any time of day, any day of the week.</li>
+      <li><strong>Complete Services:</strong> From embalming and floral arrangements to grief support, we offer everything under one roof.</li>
+    </ul>
+  </div>
+
+  <div class="team-carousel-container">
+    <div class="team-carousel" id="teamCarousel">
+      <div class="team-member">
+        <img src="about/team.png" alt="Elmer U. Musni Sr.">
+        <h3>Elmer U. Musni Sr.</h3>
+        <p>Proprietor</p>
+      </div>
+      <div class="team-member">
+        <img src="about/team.png" alt="Catherine U. Musni">
+        <h3>Catherine U. Musni</h3>
+        <p>Manager</p>
+      </div>
+      <div class="team-member">
+        <img src="about/team.png" alt="Nicky Bryne U. Musni">
+        <h3>Nicky Bryne U. Musni</h3>
+        <p>Licensed Embalmer</p>
+      </div>
+      <div class="team-member">
+        <img src="about/team.png" alt="Jaylord Urian">
+        <h3>Jaylord Urian</h3>
+        <p>Asst. Embalmer</p>
+      </div>
+      <div class="team-member">
+        <img src="about/team.png" alt="Mark Anthony M. Rieta">
+        <h3>Mark Anthony M. Rieta</h3>
+        <p>Helper</p>
+      </div>
+      <div class="team-member">
+        <img src="about/team.png" alt="Vincent Paul S. Pagud">
+        <h3>Vincent Paul S. Pagud</h3>
+        <p>Florist</p>
+      </div>
+      <div class="team-member">
+        <img src="about/team.png" alt="Romel M. Rieta">
+        <h3>Romel M. Rieta</h3>
+        <p>Driver</p>
+      </div>
+      <div class="team-member">
+        <img src="about/team.png" alt="John Kenneth U. Musni">
+        <h3>John Kenneth U. Musni</h3>
+        <p>Band Drummer</p>
+      </div>
+      <div class="team-member">
+        <img src="about/team.png" alt="Kyla Faye M. Rieta">
+        <h3>Kyla Faye M. Rieta</h3>
+        <p>Band Singer</p>
+      </div>
+      <div class="team-member">
+        <img src="about/team.png" alt="Elmer U. Musni Jr.">
+        <h3>Elmer U. Musni Jr.</h3>
+        <p>Band Singer / Page Admin</p>
+      </div>
+      <div class="team-member">
+        <img src="about/team.png" alt="Carl Cedrick M. Pagud">
+        <h3>Carl Cedrick M. Pagud</h3>
+        <p>Page Admin / Editor</p>
+      </div>
+    </div>
+    <div class="carousel-nav">
+      <button onclick="moveTeam(-1)">←</button>
+      <button onclick="moveTeam(1)">→</button>
+    </div>
+  </div>
+
+  <div class="home-description">
+    <h3>Meet Our Dedicated Team</h3>
+    <p>Each member of our team plays an important role in ensuring that every family we serve experiences compassion, dignity, and peace of mind. From management to grief support, we are committed to walking with you through every step of the journey.</p>
+  </div>
+
+  <div class="social-links">
+    <a href="https://facebook.com/musniurianfs" target="_blank">
+      <img src="about/fb.png" alt="Facebook">
+    </a>
+    <a href="mailto:musniurianfun.services@gmail.com">
+      <img src="about/email.png" alt="Email">
+    </a>
+    <a href="tel:09051986406">
+      <img src="about/contact.png" alt="Phone">
+    </a>
+    <a href="https://maps.google.com/?q=Centro+East,+Ballesteros+Cagayan+Valley" target="_blank">
+      <img src="about/loc.png" alt="Location">
+    </a>
+  </div>
+</section>
+
+
+   <section id="services">
+    <h2 style="text-align: center; color: var(--primary); font-size: 2.4rem;">Our Services</h2>
+
+  <div class="carousel-wrapper">
+  <button class="carousel-btn" onclick="moveCarousel(this, -1)">&#10094;</button>
+  <div class="carousel scrollable">
+    <img src="services/om1.png" alt="pic">
+    <img src="services/sc1.png" alt="pic">
+    <img src="services/mc1.png" alt="pic">
+    <img src="services/om3.png" alt="pic">
+    <img src="services/mc4.png" alt="pic">
+  </div>
+  <button class="carousel-btn" onclick="moveCarousel(this, 1)">&#10095;</button>
+</div>
+
+
+   <div class="home-description">
+      <h3 style="font-size: 1.8rem;">Embalming Services</h3>
+      <p>We ensure dignified and hygienic preservation of your loved ones by licensed professionals.</p>
+    </div>
+
+ <div class="home-description" style="box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); text-align: center;">
+  <h3 style="font-size: 1.8rem;">Casket Selections</h3>
+  <p>Choose from a range of finely crafted caskets suited to honor and preserve the memory of your loved ones.</p>
+
+  <div style="margin-top: 20px;">
+    <h4 style="color: var(--primary); font-size: 1.4rem;">Wood Caskets</h4>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn" onclick="moveCarousel(this, -1)">&#10094;</button>
+      <div class="carousel scrollable">
+        <img src="services/om1.png" alt="Wood Casket 1">
+        <img src="services/sc1.png" alt="Wood Casket 2">
+        <img src="services/mc1.png" alt="Wood Casket 3">
+        <img src="services/om3.png" alt="Wood Casket 4">
+        <img src="services/mc4.png" alt="Wood Casket 5">
+      </div>
+      <button class="carousel-btn" onclick="moveCarousel(this, 1)">&#10095;</button>
+    </div>
+    <p>Traditional elegance and warmth, handcrafted with quality wood materials for a timeless tribute.</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h4 style="color: var(--primary); font-size: 1.4rem;">Semi-Metal Caskets</h4>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn" onclick="moveCarousel(this, -1)">&#10094;</button>
+      <div class="carousel scrollable">
+        <img src="services/mc1.png" alt="Semi-Metal Casket 1">
+        <img src="services/mc2.png" alt="Semi-Metal Casket 2">
+        <img src="services/mc3.png" alt="Semi-Metal Casket 3">
+        <img src="services/mc4.png" alt="Semi-Metal Casket 4">
+        <img src="services/mc5.png" alt="Semi-Metal Casket 5">
+        <img src="services/mc6.png" alt="Semi-Metal Casket 6">
+        <img src="services/mc7.png" alt="Semi-Metal Casket 7">
+      </div>
+      <button class="carousel-btn" onclick="moveCarousel(this, 1)">&#10095;</button>
+    </div>
+    <p>Combines durability with cost-efficiency—perfect for those seeking both form and function.</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h4 style="color: var(--primary); font-size: 1.4rem;">Metal & Special Caskets</h4>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn" onclick="moveCarousel(this, -1)">&#10094;</button>
+      <div class="carousel scrollable">
+        <img src="services/sc1.png" alt="Special Casket 1">
+        <img src="services/sc2.png" alt="Special Casket 2">
+        <img src="services/sc3.png" alt="Special Casket 3">
+        <img src="services/sc4.png" alt="Special Casket 4">
+        <img src="services/sc5.png" alt="Special Casket 5">
+        <img src="services/sc6.png" alt="Special Casket 6">
+        <img src="services/sc7.png" alt="Special Casket 7">
+        <img src="services/sc8.png" alt="Special Casket 8">
+        <img src="services/sc9.png" alt="Special Casket 9">
+        <img src="services/sc10.png" alt="Special Casket 10">
+      </div>
+      <button class="carousel-btn" onclick="moveCarousel(this, 1)">&#10095;</button>
+    </div>
+    <p>Luxurious finishes and long-lasting materials provide enduring strength and graceful appearance.</p>
+  </div>
+</div>
+
+ <div class="home-description">
+  <h3 style="font-size: 1.8rem;">Floral Arrangements</h3>
+  <div class="carousel-wrapper">
+    <button class="carousel-btn" onclick="moveCarousel(this, -1)">&#10094;</button>
+    <div class="carousel scrollable">
+      <img src="services/flower.jpg" alt="Funeral Wreath 1">
+      <img src="services/flower1.jpg" alt="Funeral Wreath 2">
+      <img src="services/flower3.jpg" alt="Funeral Wreath 3">
+      <img src="services/flower4.jpg" alt="Funeral Wreath 4">
+      <img src="services/flower5.jpg" alt="Funeral Wreath 5">
+    </div>
+    <button class="carousel-btn" onclick="moveCarousel(this, 1)">&#10095;</button>
+  </div>
+  <p>Our in-house florists craft each piece with care and sensitivity to bring beauty to solemn occasions.</p>
+</div>
+
+   <div class="home-description">
+      <h3 style="font-size: 1.8rem;">Band & Music Services</h3>
+      <div class="carousel-wrapper">
+        <button class="carousel-btn" onclick="moveCarousel(this, -1)">&#10094;</button>
+        <div class="carousel scrollable">
+          <img src="services/band.jpg" alt="Funeral Band">
+          <img src="services/band1.jpg" alt="Live Musician">
+          <img src="services/band2.jpg" alt="Live Musician">
+          <img src="services/band3.jpg" alt="Live Musician">
+          <img src="services/band4.jpg" alt="Live Musician">
+        </div>
+        <button class="carousel-btn" onclick="moveCarousel(this, 1)">&#10095;</button>
+      </div>
+      <p>Live bands and singers perform with grace and respect to accompany every heartfelt goodbye.</p>
+    </div>
+  </section>
+
+  <section id="gallery">
+  <h2 style="text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 20px;">Gallery</h2>
+
+ <div class="carousel gallery-collage">
+  <figure>
+    <img src="services/sc1.png" alt="Gallery Image 1">
+  </figure>
+  <figure>
+    <img src="services/sc10.png" alt="Gallery Image 2">
+  </figure>
+  <figure>
+    <img src="services/sc2.png" alt="Gallery Image 3">
+  </figure>
+  <figure>
+    <img src="services/sc4.png" alt="Gallery Image 4">
+  </figure>
+  <figure>
+    <img src="services/sc6.png" alt="Gallery Image 5">
+  </figure>
+  <figure>
+    <img src="services/mc6.png" alt="Gallery Image 6">
+  </figure>
+</div>
+</section>
+
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-details">
+      <p><strong>Phone:</strong> 0905-198-6406 | 0951-206-2115 | 0935-882-3615</p>
+      <p><strong>Email:</strong> musniurianfun.services@gmail.com</p>
+      <p><strong>Facebook:</strong> <a href="https://www.facebook.com/musniurianfs">Musni Urian Funeral Services</a></p>
+      <p><strong>Location:</strong> Rizal St. Centro East, Ballesteros Cagayan Valley</p>
+    </div>
+    <form action="mailto:musniurianfun.services@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div class="map-container">
+      <iframe width="100%" height="300" frameborder="0" style="border:0"
+        src="https://maps.google.com/maps?q=Centro%20East%2C%20Ballesteros%20Cagayan%20Valley&output=embed" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <div class="lightbox" onclick="this.classList.remove('active')">
+    <img src="" alt="Expanded View">
+  </div>
+
+  <footer>&copy; 2022 Musni Urian Funeral Services. All rights reserved.</footer>
+
+ <script>
+  let teamIndex = 0;
+  function moveTeam(direction) {
+    const carousel = document.getElementById("teamCarousel");
+    const cardWidth = carousel.querySelector(".team-member").offsetWidth + 20; // +gap
+    teamIndex += direction;
+
+    const maxIndex = Math.ceil(carousel.children.length / 2) - 1;
+    if (teamIndex < 0) teamIndex = 0;
+    if (teamIndex > maxIndex) teamIndex = maxIndex;
+
+    carousel.style.transform = `translateX(-${teamIndex * cardWidth * 2}px)`;
+  }
+
+  function moveCarousel(button, direction) {
+    const wrapper = button.parentElement;
+    const carousel = wrapper.querySelector('.carousel.scrollable');
+    const scrollAmount = carousel.offsetWidth / 2;
+    carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+  }
+
+  function show(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  // Remove highlight from all buttons
+  document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active-nav'));
+
+  // Add highlight to the clicked button
+  const clickedButton = [...document.querySelectorAll('nav button')].find(btn => btn.textContent.toLowerCase().includes(id));
+  if (clickedButton) clickedButton.classList.add('active-nav');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('click', () => {
+      const lightbox = document.querySelector('.lightbox');
+      lightbox.querySelector('img').src = img.src;
+      lightbox.classList.add('active');
+    });
+  });
+
+  let announceIndex = 0;
+  function moveAnnouncement(direction) {
+    const carousel = document.getElementById('announcementCarousel');
+    const slides = carousel.children.length;
+    announceIndex += direction;
+    if (announceIndex < 0) announceIndex = slides - 1;
+    if (announceIndex >= slides) announceIndex = 0;
+    carousel.style.transform = `translateX(-${announceIndex * 100}%)`;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const captions = document.querySelectorAll('.announcement-caption');
+
+    captions.forEach(caption => {
+      const fullText = caption.getAttribute('data-full');
+      const wordArray = fullText.split(' ');
+
+      if (wordArray.length > 50) {
+        const shortText = wordArray.slice(0, 50).join(' ') + '... ';
+        caption.innerHTML = `
+          <span class="caption-text">${shortText}</span>
+          <button class="see-more-btn">See More</button>
+        `;
+
+        const btn = caption.querySelector('.see-more-btn');
+        const span = caption.querySelector('.caption-text');
+        let expanded = false;
+
+        btn.addEventListener('click', () => {
+          expanded = !expanded;
+          span.textContent = expanded ? fullText : wordArray.slice(0, 50).join(' ') + '... ';
+          btn.textContent = expanded ? 'See Less' : 'See More';
+        });
+      } else {
+        caption.textContent = fullText;
+      }
+    });
+  });
+</script>
+</body>
+</html>
